@@ -7,6 +7,8 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Microsoft.Phone.Maps.Toolkit;
+using System.Device.Location;
 
 namespace ORT
 {
@@ -19,6 +21,17 @@ namespace ORT
 
             // Set the data context of the listbox control to the sample data
             DataContext = App.ViewModel;
+
+            SetPushPinsLocation();
+        }
+
+        private void SetPushPinsLocation()
+        {
+            Pushpin almagro = (Pushpin)this.FindName("Almagro");
+            almagro.GeoCoordinate = new GeoCoordinate(-34.6099167, -58.4291801);
+
+            Pushpin belgrano = (Pushpin)this.FindName("Belgrano");
+            belgrano.GeoCoordinate = new GeoCoordinate(-34.5496559, -58.4540443);
         }
 
         // Load data for the ViewModel Items
