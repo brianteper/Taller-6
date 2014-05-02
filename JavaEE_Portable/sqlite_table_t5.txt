@@ -1,1 +1,0 @@
-create table t5(nombre varchar(64));
