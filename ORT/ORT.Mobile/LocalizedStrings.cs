@@ -1,6 +1,6 @@
-﻿using ORT.Resources;
+﻿using ORT.Mobile.Resources;
 
-namespace ORT
+namespace ORT.Mobile
 {
     /// <summary>
     /// Provides access to string resources.

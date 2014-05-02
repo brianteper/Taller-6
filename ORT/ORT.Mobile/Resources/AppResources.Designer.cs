@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ORT.Resources {
+namespace ORT.Mobile.Resources {
     using System;
     
     

@@ -8,7 +8,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
-namespace ORT.ViewModels
+namespace ORT.Mobile.ViewModels
 {
     public class ItemViewModel : INotifyPropertyChanged
     {

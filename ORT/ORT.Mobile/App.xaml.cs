@@ -8,8 +8,8 @@ using System.Windows.Markup;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using ORT.Resources;
-using ORT.ViewModels;
+using ORT.Mobile.Resources;
+using ORT.Mobile.ViewModels;
 
 namespace ORT
 {

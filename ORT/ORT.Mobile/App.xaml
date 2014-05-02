@@ -16,7 +16,7 @@
             <Setter Property="CharacterSpacing" Value="-35"/>
         </Style>
         
-        <local:LocalizedStrings xmlns:local="clr-namespace:ORT" x:Key="LocalizedStrings"/>
+        <local:LocalizedStrings xmlns:local="clr-namespace:ORT.Mobile" x:Key="LocalizedStrings"/>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

@@ -5,9 +5,11 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Controls="clr-namespace:Microsoft.Phone.Maps.Controls;assembly=Microsoft.Phone.Maps"
-    xmlns:toolkit="clr-namespace:Microsoft.Phone.Maps.Toolkit;assembly=Microsoft.Phone.Controls.Toolkit"
-    x:Class="ORT.MainPage"
+    xmlns:maps="clr-namespace:Microsoft.Phone.Maps.Controls;assembly=Microsoft.Phone.Maps"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:mapsToolkit="clr-namespace:Microsoft.Phone.Maps.Toolkit;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
+    x:Class="ORT.Mobile.MainPage"
     mc:Ignorable="d"
     d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -115,56 +117,101 @@
 
             <!--Panorama item four-->
             <phone:PanoramaItem Header="Ubicación">
-                <StackPanel Margin="0,-6,0,12">
-                    <Controls:Map Name="Mapa" CartographicMode="Road" Center="-34.59093, -58.46057" ZoomLevel="17">
-                        <toolkit:MapExtensions.Children>
-                            <toolkit:Pushpin x:Name="Almagro" Content="Almagro (Yatay 240)"/>
-                            <toolkit:Pushpin x:Name="Belgrano" Content="Belgrano (Av. del Libertador 6796)"/>
-                        </toolkit:MapExtensions.Children>
-                    </Controls:Map>
-                </StackPanel>
+                <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,4,16,10">
+                    <maps:Map Name="Mapa" CartographicMode="Road" Center="-34.59093, -58.46057" ZoomLevel="12" Loaded="Map_Loaded">
+                        <mapsToolkit:MapExtensions.Children>
+                            <mapsToolkit:Pushpin x:Name="Almagro" Content="Almagro (Yatay 240)" GeoCoordinate="-34.6099167, -58.4291801"/>
+                            <mapsToolkit:Pushpin x:Name="Belgrano" Content="Belgrano (Av. del Libertador 6796)" GeoCoordinate="-34.5496559, -58.4540443"/>
+                        </mapsToolkit:MapExtensions.Children>
+                    </maps:Map>
+                </Grid>
             </phone:PanoramaItem>
 
             <!--Panorama item five-->
             <phone:PanoramaItem Header="Contacto">
-                <!--Single line list with text wrapping-->
-                <phone:LongListSelector Margin="0,0,-22,0" ItemsSource="{Binding Items}">
-                    <phone:LongListSelector.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Margin="0,-6,0,12">
-                                <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </phone:LongListSelector.ItemTemplate>
-                </phone:LongListSelector>
+                <ScrollViewer>
+                    <StackPanel Margin="0,-6,0,12">
+                        <TextBlock Text="Almagro" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
+                        <TextBlock Text="Yatay 240 (C1184ADD) Bs. As - Argentina" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBlock Text="Tel.: 4958-9000" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBlock Text="INFORMES E INSCRIPCIÓN" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBlock Text="PARA INGRESANTES" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBlock Text="Tel.: 4958-9032" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBlock Text="Lunes a Jueves de 13:00 a 22:00 Hs." TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBlock Text="instituto@ort.edu.ar" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBlock Text="Belgrano" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
+                        <TextBlock Text="Av. del Libertador 6796" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBlock Text="(C1429BMN) Bs.As - Argentina" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBlock Text="Tel.: 4789-6500" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBlock Text="INFORMES E INSCRIPCIÓN" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBlock Text="PARA INGRESANTES" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBlock Text="Tel.: 4789-6566" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBlock Text="Lunes a Jueves de 13:00 a 22:00 Hs." TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBlock Text="instituto@ort.edu.ar" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                    </StackPanel>
+                </ScrollViewer>
             </phone:PanoramaItem>
 
             <!--Panorama item four-->
             <phone:PanoramaItem Header="Consultas">
-                <!--Single line list with text wrapping-->
-                <phone:LongListSelector Margin="0,0,-22,0" ItemsSource="{Binding Items}">
-                    <phone:LongListSelector.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Margin="0,-6,0,12">
-                                <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </phone:LongListSelector.ItemTemplate>
-                </phone:LongListSelector>
+                <ScrollViewer>
+                    <StackPanel Margin="0,-6,0,12">
+                        <TextBlock Text="Nombre" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBox Name="Nombre"/>
+                        <TextBlock Text="Apellido" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBox Name="Apellido"/>
+                        <TextBlock Text="Mail" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBox Name="Mail"/>
+                        <toolkit:ListPicker x:Name="UstedEs" Header="Usted es ..." FullModeHeader="Usted es ..." SelectionMode="Single" ExpansionMode="ExpansionAllowed">
+                            <System:String>Alumno de la Escuela</System:String>
+                            <System:String>Alumno del Instituto</System:String>
+                            <System:String>Egresado de la escuela técnica ORT</System:String>
+                            <System:String>Docente de ORT</System:String>
+                            <System:String>Invitado</System:String>
+                            <System:String>Padre/Madre de alumno de la sede Almagro</System:String>
+                            <System:String>Padre/Madre de alumno de la sede Belgrano</System:String>
+                            <System:String>Egresado del Instituto de tecnología ORT</System:String>
+                            <System:String>Visitante</System:String>
+                        </toolkit:ListPicker>
+                        <toolkit:ListPicker x:Name="TieneInteres" Header="Tiene interés en ..." FullModeHeader="Tiene interés en ..." SelectionMode="Single" ExpansionMode="ExpansionAllowed">
+                            <System:String>Inscripción a la Escuela Técnica ORT sede Almagro</System:String>
+                            <System:String>Inscripción a la Escuela Técnica ORT sede Belgrano</System:String>
+                            <System:String>Información de Carreras Terciarias del Instituto</System:String>
+                            <System:String>Consulta sobre aranceles</System:String>
+                            <System:String>Utilizar los servicios del Campus Virtual</System:String>
+                            <System:String>El Centro de Diseño ORT</System:String>
+                            <System:String>El Centro de Tecnología ORT</System:String>
+                            <System:String>Contacto con el Centro de Graduados ORT</System:String>
+                            <System:String>Contacto con el Centro de Emprendedores ORT</System:String>
+                            <System:String>Contacto con la Escuela de Integración de Tecnología y Negocios</System:String>
+                            <System:String>Otros</System:String>
+                        </toolkit:ListPicker>
+                        <TextBlock Text="Mensaje" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBox TextWrapping="Wrap" AcceptsReturn="True" MaxHeight="370" />
+                        <Button Name="Submit" Content="Enviar"/>
+                    </StackPanel>
+                </ScrollViewer>
             </phone:PanoramaItem>
 
             <!--Panorama item four-->
             <phone:PanoramaItem Header="Acerca de">
-                <!--Single line list with text wrapping-->
-                <phone:LongListSelector Margin="0,0,-22,0" ItemsSource="{Binding Items}">
-                    <phone:LongListSelector.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Margin="0,-6,0,12">
-                                <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </phone:LongListSelector.ItemTemplate>
-                </phone:LongListSelector>
+                <ScrollViewer>
+                    <StackPanel Margin="0,-6,0,12">
+                        <RichTextBox TextAlignment="Justify" IsReadOnly="True">
+                            <Paragraph>
+                                Por su concepción e infraestructura, la Escuela y el Instituto de ORT Argentina se han convertido en un ámbito de permanente investigación y de desarrollo de nuevas estructuras curriculares y metodologías educativas. Cabe destacar que ORT es una de las instituciones no gubernamentales que ha aportado el mayor número de planes de estudio en los niveles medio y terciario al sistema educativo argentino.
+                                La diversidad de proyectos educativos, diseñados y desarrollados en las diferentes unidades académicas de ORT Argentina, revelan principios constitutivos y sostenedores de nuestra trayectoria: brindar soluciones a las necesidades de formación y capacitación de la comunidad, imbuidas de principios orientadores hacia la integridad personal, el respeto a valores que posibilitan la inclusión en la sociedad de un modo eficiente, constructivo y solidario, y el reconocimiento de los fundamentos humanísticos de nuestra herencia que deseamos preservar.
+                                <LineBreak/>
+                                <LineBreak/>
+                                El producto de estos principios motores es una amplia oferta de carreras, orientaciones y servicios, integrados a las permanentes innovaciones que se suceden en el plano del conocimiento científico, tecnológico y social, que posibilita a nuestros alumnos y egresados recibir una formación cercana a sus intereses personales y académicos, y estar capacitados para continuar estudios superiores e insertarse reconocida y creativamente en el mundo laboral.
+                                Desde sus orígenes fundacionales ORT se ha caracterizado por brindar educación de excelencia en contextos cambiantes y ha asumido la responsabilidad de ofrecer sus servicios a todo joven, independientemente de su capacidad arancelaria. La Escuela Técnica ORT asume con honor, compromiso y pasión la responsabilidad de seguir Educando para la Vida, sin descuidar a aquellos que más lo necesitan.
+                                <LineBreak/>
+                                <LineBreak/>
+                                ORT Argentina, avalada por tantos años de trayectoria y experiencia, cuenta con el continuo reconocimiento de autoridades educativas nacionales y extranjeras. La Escuela Técnica de ORT Argentina es la primera escuela distinguida con el Diploma al Mérito Konex 2008 en la disciplina Entidades Educacionales en reconocimiento a su destacada trayectoria en la última década.
+                            </Paragraph>
+                        </RichTextBox>
+                    </StackPanel>
+                </ScrollViewer>
             </phone:PanoramaItem>
         </phone:Panorama>
 

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using ORT.Resources;
+using ORT.Mobile.Resources;
 
-namespace ORT.ViewModels
+namespace ORT.Mobile.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
