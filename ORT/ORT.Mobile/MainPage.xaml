@@ -154,14 +154,14 @@
 
             <!--Panorama item four-->
             <phone:PanoramaItem Header="Consultas">
-                <ScrollViewer>
+                <ScrollViewer Name="ConsultasSV">
                     <StackPanel Margin="0,-6,0,12">
                         <TextBlock Text="Nombre" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
                         <TextBox Name="Nombre"/>
                         <TextBlock Text="Apellido" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
                         <TextBox Name="Apellido"/>
                         <TextBlock Text="Mail" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-                        <TextBox Name="Mail"/>
+                        <TextBox Name="Mail" InputScope="EmailUserName"/>
                         <toolkit:ListPicker x:Name="UstedEs" Header="Usted es ..." FullModeHeader="Usted es ..." SelectionMode="Single" ExpansionMode="ExpansionAllowed">
                             <System:String>Alumno de la Escuela</System:String>
                             <System:String>Alumno del Instituto</System:String>
@@ -187,8 +187,8 @@
                             <System:String>Otros</System:String>
                         </toolkit:ListPicker>
                         <TextBlock Text="Mensaje" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-                        <TextBox TextWrapping="Wrap" AcceptsReturn="True" MaxHeight="370" />
-                        <Button Name="Submit" Content="Enviar"/>
+                        <TextBox Name="Mensaje" TextWrapping="Wrap" AcceptsReturn="True" MaxHeight="370" />
+                        <Button Name="Submit" Content="Enviar" Click="Submit_Click"/>
                     </StackPanel>
                 </ScrollViewer>
             </phone:PanoramaItem>
