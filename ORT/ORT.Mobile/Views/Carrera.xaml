@@ -1,0 +1,113 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="ORT.Views.Carrera"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="Instituto de Tecnología ORT" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Name="PageName" Text="" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <ScrollViewer>
+                <StackPanel Margin="0,-6,0,12">
+                    <RichTextBox Name="AnalistaSistemas" Visibility="Collapsed" TextAlignment="Justify" IsReadOnly="True">
+                        <Paragraph>
+                            El área donde mayores y más visible avances han tenido la aplicación de la informática y de los sistemas de computación es en el contexto de la gestión de las organizaciones. Hoy en día, la información es un recurso importante en la gestión de cualquier tipo de institución. Esta situación ha motivado la necesidad de formar un técnico superior con las competencias necesarias para colaborar en el proceso de la gestión de la información al interior de la organización.
+                            <LineBreak/>
+                            <LineBreak/>
+                            Se adquieren estas competencias a través de espacios curriculares referidos a la organización de empresas, sistemas de administración y modelos de negocios, entre otros.
+                            <LineBreak/>
+                            <LineBreak/>
+                            La institución es pionera en el diseño de planes de estudio orientados a las disciplinas tecnológicas del nivel terciario. Dicta la carrera de Analista de sistemas de Computación desde el año 1977. (actualmente denominada Analista de Sistemas).
+                            <LineBreak/>
+                            <LineBreak/>
+                            El Analista de Sistemas ORT es un profesional informático capacitado para desempeñarse en diferentes roles, tales como Desarrollador, Tester, Analista Funcional, Arquitecto de Software, Líder de Proyecto, DBA – Administrador de Bases de Datos, Administrador de Redes, Asesor en Tecnología, Encargado de Seguridad Informática, Asegurador de Calidad (QA), Auditor de Sistemas, Consultor en informática.
+                            <LineBreak/>
+                            <LineBreak/>
+                            Se desempeña como profesional en variados ámbitos: organizaciones civiles, bancos, entidades financieras, empresas comerciales, industrias, consultoras y emprendimientos personales.
+                        </Paragraph>
+                    </RichTextBox>
+
+                    <RichTextBox Name="ProduccionMusicaSonido" Visibility="Collapsed" TextAlignment="Justify" IsReadOnly="True">
+                        <Paragraph>
+                            Los egresados del Instituto de Tecnología ORT Argentina podrán ejercer profesionalmente como productor musical y operador integral de sonido, afrontando las diversas áreas de la profesión con una amplia formación técnica, artística y musical, en una carrera que se adapta a las últimas necesidades del mercado, ofreciendo un perfil actualizado, novedoso e integrador.
+                        </Paragraph>
+                    </RichTextBox>
+
+                    <RichTextBox Name="AutomatizacionIndustrial" Visibility="Collapsed" TextAlignment="Justify" IsReadOnly="True">
+                        <Paragraph>
+                            Te formarás en el campo del control automático y las redes de información adquiriendo las capacidades requeridas para los sistemas de control de máquinas, procesos industriales, edificios inteligentes, redes y comunicaciones. 
+Para ello incursionarás en el conocimiento de tecnologías básicas y especializadas y en su respectiva aplicación, contando con laboratorios equipados para tu formación.
+                            <LineBreak/>
+                            <LineBreak/>
+                            Recibiéndote en el Instituto de Tecnología ORT, contarás con todas las herramientas necesarias para proyectar, instalar y mantener sistemas de automatización tanto de industrias como edificios, y redes de comunicaciones de voz y datos.
+Tendrás la capacidad de utilizar PLC´s, microcontroladores, equipos de control industrial y de comunicaciones como fuertes herramientas de trabajo.
+De esta forma, estarás altamente capacitado para insertarte competitivamente en el mercado laboral.
+                        </Paragraph>
+                    </RichTextBox>
+
+                    <RichTextBox Name="Biotecnologia" Visibility="Collapsed" TextAlignment="Justify" IsReadOnly="True">
+                        <Paragraph>
+                            Biotecnología te ofrecerá una sólida formación en tecnología básica e inter-disciplinaria, y en su aplicación. Profundizarás en los requerimientos creados por los laboratorios de las empresas, mejorando las condiciones del medio, logrando un aprovechamiento racional de los recursos naturales y obteniendo productos que optimizarán las condiciones de vida.
+                            <LineBreak/>
+                            <LineBreak/>
+                            Recibiéndote en el Instituto de tecnología ORT, contaras con todas las herramientas necesarias para realizar diversos ensayos en microbiología, biología molecular, genética y alimentos.
+                            <LineBreak/>
+                            <LineBreak/>
+                            De esta forma, estarás altamente capacitado para insertarte competitivamente en el mercado laboral.
+                        </Paragraph>
+                    </RichTextBox>
+
+                    <RichTextBox Name="DiseñoIndustrial" Visibility="Collapsed" TextAlignment="Justify" IsReadOnly="True">
+                        <Paragraph>
+                            Recibiéndote en el Instituto de Tecnología ORT, contarás con todas las herramientas necesarias para analizar, diseñar y gestionar la producción de objetos propios o para terceros, y también su comercialización.
+Tendrás la capacidad de generar optimización e innovación sobre los diferentes procesos, usos y modos de consumo.
+                            <LineBreak/>
+                            <LineBreak/>
+                            De esta forma, estarás altamente capacitado para insertarte competitivamente en el mercado laboral.
+                        </Paragraph>
+                    </RichTextBox>
+
+                    <RichTextBox Name="DiseñoIndumentaria" Visibility="Collapsed" TextAlignment="Justify" IsReadOnly="True">
+                        <Paragraph>
+                            El egresado estará en condiciones de desempeñarse en una multiplicidad de proyectos relacionados con la industria textil y de la indumentaria, como profesional independiente o en estudios de diseño, en empresas que tengan departamentos afines, tanto en forma individual como en equipos interdisciplinarios.  También podrá trabajar en forma autónoma creando su propio emprendimiento o estudio de diseño.
+                        </Paragraph>
+                    </RichTextBox>
+
+                    <RichTextBox Name="DiseñoInteriores" Visibility="Collapsed" TextAlignment="Justify" IsReadOnly="True">
+                        <Paragraph>
+                            El egresado estará en condiciones de desempeñarse en una multiplicidad de proyectos de Diseño de Interiores como profesional independiente; en estudios de diseño; en empresas que tengan departamentos afines; en empresas proveedoras de insumos de la industria de la construcción; tanto en forma individual como en equipos interdisciplinarios.  También podrá trabajar en forma autónoma creando su propio emprendimiento o estudio de diseño.
+                        </Paragraph>
+                    </RichTextBox>
+
+                    <RichTextBox Name="DiseñoGrafico" Visibility="Collapsed" TextAlignment="Justify" IsReadOnly="True">
+                        <Paragraph>
+                            El egresado de la carrera Diseño Gráfico estará habilitado para desempeñarse en una multiplicidad de proyectos de comunicación visual como profesional independiente; en estudios de diseño gráfico; agencias de publicidad; editoriales; estudios de diseños integrales; o en empresas que tengan departamentos afines, tanto en forma individual como en equipos interdisciplinarios.
+                        </Paragraph>
+                    </RichTextBox>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

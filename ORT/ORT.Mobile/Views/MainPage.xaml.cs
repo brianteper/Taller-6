@@ -124,5 +124,10 @@ namespace ORT.Mobile
 
             this.ConsultasSV.ScrollToVerticalOffset(0);
         }
+
+        private void Carrera_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Views/Carrera.xaml?buttonName=" + ((Button)sender).Name + "&description=" + ((Button)sender).Content, UriKind.Relative));
+        }
     }
 }

@@ -11,7 +11,7 @@
     xmlns:System="clr-namespace:System;assembly=mscorlib"
     x:Class="ORT.Mobile.MainPage"
     mc:Ignorable="d"
-    d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
+    d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -41,7 +41,7 @@
          -->
 
         <!--Panorama control-->
-        <phone:Panorama Title="ORT Argentina">
+        <phone:Panorama Title="Instituto de Tecnología ORT">
             <phone:Panorama.Background>
                 <ImageBrush ImageSource="/ORT;component/Assets/PanoramaBackground.png"/>
             </phone:Panorama.Background>
@@ -50,15 +50,15 @@
             <phone:PanoramaItem Header="Carreras">
                 <StackPanel Margin="0,-6,0,12">
                     <TextBlock Text="Almagro" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
-                    <TextBlock Text="Analista de Sistemas" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-                    <TextBlock Text="Producción de Música y Sonido" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-                    <TextBlock Text="Automatización Industrial" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-                    <TextBlock Text="Biotecnología" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                    <Button Content="Analista de Sistemas" Click="Carrera_Click" Name="AnalistaSistemas" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight"></Button>
+                    <Button Content="Producción de Música y Sonido" Click="Carrera_Click" Name="ProduccionMusicaSonido" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight"></Button>
+                    <Button Content="Automatización Industrial" Click="Carrera_Click" Name="AutomatizacionIndustrial" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight"></Button>
+                    <Button Content="Biotecnología" Click="Carrera_Click" Name="Biotecnologia" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight"></Button>
                     <TextBlock Text="Belgrano" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
-                    <TextBlock Text="Diseño Industrial" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-                    <TextBlock Text="Diseño de Indumentaria" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-                    <TextBlock Text="Diseño de Interiores" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-                    <TextBlock Text="Diseño Gráfico" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                    <Button Content="Diseño Industrial" Click="Carrera_Click" Name="DiseñoIndustrial" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight"></Button>
+                    <Button Content="Diseño de Indumentaria" Click="Carrera_Click" Name="DiseñoIndumentaria" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight"></Button>
+                    <Button Content="Diseño de Interiores" Click="Carrera_Click" Name="DiseñoInteriores" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight"></Button>
+                    <Button Content="Diseño Gráfico" Click="Carrera_Click" Name="DiseñoGrafico" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight"></Button>
                 </StackPanel>
             </phone:PanoramaItem>
 
