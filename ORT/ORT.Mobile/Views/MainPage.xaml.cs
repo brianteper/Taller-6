@@ -12,6 +12,8 @@ using System.Device.Location;
 using Microsoft.Phone.Maps;
 using System.Windows.Media;
 using System.Text.RegularExpressions;
+using Venetasoft.WP.Net;
+using System.Text;
 
 namespace ORT.Mobile
 {
@@ -43,7 +45,7 @@ namespace ORT.Mobile
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            dynamic form = new 
+            dynamic form = new
             {
                 Nombre = this.Nombre.Text,
                 Apellido = this.Apellido.Text,
@@ -112,9 +114,56 @@ namespace ORT.Mobile
             }
 
             //Send form to service
+            SendMail(form);
+        }
 
-            MessageBox.Show("El formulario ha sido enviado con éxito!");
+        private void SendMail(dynamic form)
+        {
+            //create a new MailMessage object
+            
+            MailMessage mailMessage = new MailMessage();
 
+            //set a Live/Hotmail or Gmail, or a custom SMTP account
+
+            mailMessage.UserName = "brian.teper@gmail.com";
+
+            mailMessage.Password = "*********";
+
+            mailMessage.AccountType = MailMessage.AccountTypeEnum.Gmail;
+
+            mailMessage.From = "windowsphone@ort.edu.ar";
+
+            //set mail data
+
+            //mailMessage.To = "ito1@ort.edu.ar";
+            mailMessage.To = "brian.teper@outlook.com";
+
+            mailMessage.ReplyTo = "noreply@ort.edu.ar";
+
+            mailMessage.Subject = "ORT ARGENTINA :: Consulta desde la aplicación Windows Phone";
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Soy de ORT: " + form.UstedEs);
+            sb.AppendLine("Estoy interesado en: " + form.TieneInteres);
+            sb.AppendLine("Nombre y Apellido: " + form.Nombre + " " + form.Apellido);
+            sb.AppendLine("Email: " + form.Mail);
+            sb.AppendLine("Mensaje: " + form.Mensaje);
+
+            mailMessage.Body = sb.ToString(); //text or HTML
+
+            //set message event handlers
+
+            mailMessage.Error += mailMessage_Error;
+
+            mailMessage.MailSent += mailMessage_MailSent;
+
+            //send email (async)
+
+            mailMessage.Send();
+        }
+
+        private void mailMessage_MailSent(object sender, Venetasoft.WP7.ValueEventArgs<bool> e)
+        {
             this.Nombre.Text = String.Empty;
             this.Apellido.Text = String.Empty;
             this.Mail.Text = String.Empty;
@@ -122,7 +171,14 @@ namespace ORT.Mobile
             this.TieneInteres.SelectedIndex = 0;
             this.Mensaje.Text = String.Empty;
 
+            MessageBox.Show("El formulario ha sido enviado con éxito!");
+
             this.ConsultasSV.ScrollToVerticalOffset(0);
+        }
+
+        private void mailMessage_Error(object sender, Venetasoft.WP7.ErrorEventArgs e)
+        {
+            MessageBox.Show("No se ha podido enviar su consulta. Por favor verifique la conexión y vuelta a intentarlo.");
         }
 
         private void Carrera_Click(object sender, RoutedEventArgs e)
