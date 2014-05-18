@@ -14,11 +14,13 @@ using System.Windows.Media;
 using System.Text.RegularExpressions;
 using Venetasoft.WP.Net;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace ORT.Mobile
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        private string ServiceBaseUrl = "http://10.0.1.20:1297/api/";
         // Constructor
         public MainPage()
         {
@@ -119,66 +121,61 @@ namespace ORT.Mobile
 
         private void SendMail(dynamic form)
         {
-            //create a new MailMessage object
-            
-            MailMessage mailMessage = new MailMessage();
+            try
+            {
+                Microsoft.Phone.Shell.SystemTray.IsVisible = true;
+                
+                var progressIndicator = Microsoft.Phone.Shell.SystemTray.ProgressIndicator;
+                progressIndicator.Text = "Enviando consulta...";
+                progressIndicator.IsVisible = true;
 
-            //set a Live/Hotmail or Gmail, or a custom SMTP account
+                string jsonData = JsonConvert.SerializeObject(form);
 
-            mailMessage.UserName = "brian.teper@gmail.com";
+                WebClient webClient = new WebClient();
+                webClient.Headers["Content-type"] = "application/json";
+                webClient.Encoding = Encoding.UTF8;
 
-            mailMessage.Password = "*********";
+                Uri uri = new Uri(ServiceBaseUrl + "mail/sendmail", UriKind.Absolute);
+                webClient.UploadStringCompleted += new UploadStringCompletedEventHandler(webClient_UploadStringCompleted);
+                webClient.UploadStringAsync(uri, "POST", jsonData);
+            }
+            catch (Exception ex)
+            {
+                HideTray();
 
-            mailMessage.AccountType = MailMessage.AccountTypeEnum.Gmail;
-
-            mailMessage.From = "windowsphone@ort.edu.ar";
-
-            //set mail data
-
-            //mailMessage.To = "ito1@ort.edu.ar";
-            mailMessage.To = "brian.teper@outlook.com";
-
-            mailMessage.ReplyTo = "noreply@ort.edu.ar";
-
-            mailMessage.Subject = "ORT ARGENTINA :: Consulta desde la aplicación Windows Phone";
-
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Soy de ORT: " + form.UstedEs);
-            sb.AppendLine("Estoy interesado en: " + form.TieneInteres);
-            sb.AppendLine("Nombre y Apellido: " + form.Nombre + " " + form.Apellido);
-            sb.AppendLine("Email: " + form.Mail);
-            sb.AppendLine("Mensaje: " + form.Mensaje);
-
-            mailMessage.Body = sb.ToString(); //text or HTML
-
-            //set message event handlers
-
-            mailMessage.Error += mailMessage_Error;
-
-            mailMessage.MailSent += mailMessage_MailSent;
-
-            //send email (async)
-
-            mailMessage.Send();
+                MessageBox.Show("No se ha podido enviar su consulta. Por favor vuelva a intentarlo.");
+            }
         }
 
-        private void mailMessage_MailSent(object sender, Venetasoft.WP7.ValueEventArgs<bool> e)
+        private static void HideTray()
         {
-            this.Nombre.Text = String.Empty;
-            this.Apellido.Text = String.Empty;
-            this.Mail.Text = String.Empty;
-            this.UstedEs.SelectedIndex = 0;
-            this.TieneInteres.SelectedIndex = 0;
-            this.Mensaje.Text = String.Empty;
+            var progressIndicator = Microsoft.Phone.Shell.SystemTray.ProgressIndicator;
+            progressIndicator.IsVisible = false;
 
-            MessageBox.Show("El formulario ha sido enviado con éxito!");
-
-            this.ConsultasSV.ScrollToVerticalOffset(0);
+            Microsoft.Phone.Shell.SystemTray.IsVisible = false;
         }
 
-        private void mailMessage_Error(object sender, Venetasoft.WP7.ErrorEventArgs e)
+        private void webClient_UploadStringCompleted(object sender, UploadStringCompletedEventArgs e)
         {
-            MessageBox.Show("No se ha podido enviar su consulta. Por favor verifique la conexión y vuelta a intentarlo.");
+            if (e.Error == null)
+            {
+                this.Nombre.Text = String.Empty;
+                this.Apellido.Text = String.Empty;
+                this.Mail.Text = String.Empty;
+                this.UstedEs.SelectedIndex = 0;
+                this.TieneInteres.SelectedIndex = 0;
+                this.Mensaje.Text = String.Empty;
+
+                this.ConsultasSV.ScrollToVerticalOffset(0);
+
+                MessageBox.Show("El formulario ha sido enviado con éxito!");
+            }
+            else
+            {
+                MessageBox.Show("No se ha podido enviar su consulta. Por favor vuelva a intentarlo.");
+            }
+
+            HideTray();
         }
 
         private void Carrera_Click(object sender, RoutedEventArgs e)

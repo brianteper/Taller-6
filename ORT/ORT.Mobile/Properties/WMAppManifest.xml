@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="es-AR" />
-  <App xmlns="" ProductID="{c2dbf24e-35f4-4cce-90e7-245af4164188}" Title="ORT" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Brian Teper" Description="" Publisher="ORT Argentina" PublisherID="{6d8c1b0d-c801-4b22-bc91-50eb48da405b}">
+  <App xmlns="" ProductID="{c2dbf24e-35f4-4cce-90e7-245af4164188}" Title="ORT Argentina" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Brian Teper" Description="" Publisher="ORT Argentina" PublisherID="{6d8c1b0d-c801-4b22-bc91-50eb48da405b}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
