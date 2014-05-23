@@ -109,11 +109,11 @@
                     <Button Content="Producción de Música y Sonido" Click="Carrera_Click" Name="ProduccionMusicaSonido" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight" Style="{StaticResource ButtonStyleCareer}"></Button>
                     <Button Content="Automatización Industrial" Click="Carrera_Click" Name="AutomatizacionIndustrial" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight" Style="{StaticResource ButtonStyleCareer}"></Button>
                     <Button Content="Biotecnología" Click="Carrera_Click" Name="Biotecnologia" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight" Style="{StaticResource ButtonStyleCareer}"></Button>
-                    <TextBlock Text="Belgrano" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
+                    <!--<TextBlock Text="Belgrano" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
                     <Button Content="Diseño Industrial" Click="Carrera_Click" Name="DiseñoIndustrial" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight" Style="{StaticResource ButtonStyleCareer}"></Button>
                     <Button Content="Diseño de Indumentaria" Click="Carrera_Click" Name="DiseñoIndumentaria" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight" Style="{StaticResource ButtonStyleCareer}"></Button>
                     <Button Content="Diseño de Interiores" Click="Carrera_Click" Name="DiseñoInteriores" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight" Style="{StaticResource ButtonStyleCareer}"></Button>
-                    <Button Content="Diseño Gráfico" Click="Carrera_Click" Name="DiseñoGrafico" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight" Style="{StaticResource ButtonStyleCareer}"></Button>
+                    <Button Content="Diseño Gráfico" Click="Carrera_Click" Name="DiseñoGrafico" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight" Style="{StaticResource ButtonStyleCareer}"></Button>-->
                 </StackPanel>
             </phone:PanoramaItem>
 
@@ -173,10 +173,10 @@
             <!--Panorama item four-->
             <phone:PanoramaItem Header="Ubicación">
                 <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,4,16,10">
-                    <maps:Map Name="Mapa" CartographicMode="Road" Center="-34.59093, -58.46057" ZoomLevel="12" Loaded="Map_Loaded">
+                    <maps:Map Name="Mapa" CartographicMode="Road" Center="-34.59893, -58.42657" ZoomLevel="12" Loaded="Map_Loaded">
                         <mapsToolkit:MapExtensions.Children>
                             <mapsToolkit:Pushpin x:Name="Almagro" Content="Almagro (Yatay 240)" GeoCoordinate="-34.6099167, -58.4291801"/>
-                            <mapsToolkit:Pushpin x:Name="Belgrano" Content="Belgrano (Av. del Libertador 6796)" GeoCoordinate="-34.5496559, -58.4540443"/>
+                            <!--<mapsToolkit:Pushpin x:Name="Belgrano" Content="Belgrano (Av. del Libertador 6796)" GeoCoordinate="-34.5496559, -58.4540443"/>-->
                         </mapsToolkit:MapExtensions.Children>
                     </maps:Map>
                 </Grid>
@@ -194,7 +194,7 @@
                         <TextBlock Text="Tel.: 4958-9032" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
                         <TextBlock Text="Lunes a Jueves de 13:00 a 22:00 Hs." TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
                         <TextBlock Text="instituto@ort.edu.ar" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-                        <TextBlock Text="Belgrano" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
+                        <!--<TextBlock Text="Belgrano" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
                         <TextBlock Text="Av. del Libertador 6796" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
                         <TextBlock Text="(C1429BMN) Bs.As - Argentina" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
                         <TextBlock Text="Tel.: 4789-6500" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
@@ -202,7 +202,7 @@
                         <TextBlock Text="PARA INGRESANTES" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
                         <TextBlock Text="Tel.: 4789-6566" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
                         <TextBlock Text="Lunes a Jueves de 13:00 a 22:00 Hs." TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-                        <TextBlock Text="instituto@ort.edu.ar" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBlock Text="instituto@ort.edu.ar" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>-->
                     </StackPanel>
                 </ScrollViewer>
             </phone:PanoramaItem>

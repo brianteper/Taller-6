@@ -20,7 +20,7 @@ namespace ORT.Mobile
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        private string ServiceBaseUrl = "http://10.0.1.20:1297/api/";
+        private string ServiceBaseUrl = "http://futurasoft.com.ar/ORTWebApi/api/";
         // Constructor
         public MainPage()
         {
@@ -168,14 +168,16 @@ namespace ORT.Mobile
 
                 this.ConsultasSV.ScrollToVerticalOffset(0);
 
+                HideTray();
+
                 MessageBox.Show("El formulario ha sido enviado con éxito!");
             }
             else
             {
+                HideTray();
+
                 MessageBox.Show("No se ha podido enviar su consulta. Por favor vuelva a intentarlo.");
             }
-
-            HideTray();
         }
 
         private void Carrera_Click(object sender, RoutedEventArgs e)

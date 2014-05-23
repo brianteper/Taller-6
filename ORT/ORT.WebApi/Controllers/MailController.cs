@@ -15,8 +15,8 @@ namespace ORT.WebApi.Controllers
     {
         public void SendMail(dynamic form)
         {
-            var fromEmail = "brian.teper@gmail.com";
-            var fromPassword = "******";
+            var fromEmail = "instituto.ort.smtp@gmail.com";
+            var fromPassword = "ort.smtp.2014";
 
             var toEmail = "brian.teper@outlook.com";
             //var toEmail = "ito1@ort.edu.ar";

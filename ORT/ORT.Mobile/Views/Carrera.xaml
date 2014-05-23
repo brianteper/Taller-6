@@ -78,7 +78,7 @@ De esta forma, estarás altamente capacitado para insertarte competitivamente en
                         </Paragraph>
                     </RichTextBox>
 
-                    <RichTextBox Name="DiseñoIndustrial" Visibility="Collapsed" TextAlignment="Justify" IsReadOnly="True">
+                    <!--<RichTextBox Name="DiseñoIndustrial" Visibility="Collapsed" TextAlignment="Justify" IsReadOnly="True">
                         <Paragraph>
                             Recibiéndote en el Instituto de Tecnología ORT, contarás con todas las herramientas necesarias para analizar, diseñar y gestionar la producción de objetos propios o para terceros, y también su comercialización.
 Tendrás la capacidad de generar optimización e innovación sobre los diferentes procesos, usos y modos de consumo.
@@ -104,7 +104,7 @@ Tendrás la capacidad de generar optimización e innovación sobre los diferente
                         <Paragraph>
                             El egresado de la carrera Diseño Gráfico estará habilitado para desempeñarse en una multiplicidad de proyectos de comunicación visual como profesional independiente; en estudios de diseño gráfico; agencias de publicidad; editoriales; estudios de diseños integrales; o en empresas que tengan departamentos afines, tanto en forma individual como en equipos interdisciplinarios.
                         </Paragraph>
-                    </RichTextBox>
+                    </RichTextBox>-->
                 </StackPanel>
             </ScrollViewer>
         </Grid>
