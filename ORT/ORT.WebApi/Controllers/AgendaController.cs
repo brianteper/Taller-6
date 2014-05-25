@@ -8,12 +8,13 @@ using System.Net.Mail;
 using System.Text;
 using System.Web.Helpers;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace ORT.WebApi.Controllers
 {
     public class AgendaController : ApiController
     {
-        public string GetEvents()
+        public HttpResponseMessage GetEvents()
         {
             using (var ortWPContext = new ORTWPEntities())
             {
@@ -21,7 +22,7 @@ namespace ORT.WebApi.Controllers
 
                 var agenda = (from a in ortWPContext.Agenda where a.Fecha >= DateTime.Today && a.Fecha < limitDate select a);
 
-                return JsonConvert.SerializeObject(agenda);
+                return Request.CreateResponse(HttpStatusCode.OK, agenda.ToArray(), Configuration.Formatters.JsonFormatter);
             }
         }
     }

@@ -13,13 +13,13 @@ namespace ORT.WebApi.Controllers
 {
     public class PhotosController : ApiController
     {
-        public string GetPhotos()
+        public HttpResponseMessage GetPhotos()
         {
             using (var ortWPContext = new ORTWPEntities())
             {
-                var photos = (from p in ortWPContext.Fotos where p.Vigente == true select p).Take(10);
+                var photos = (from p in ortWPContext.Fotos where p.Vigente == true select p).Take(1);
 
-                return JsonConvert.SerializeObject(photos);
+                return Request.CreateResponse(HttpStatusCode.OK, photos.ToArray(), Configuration.Formatters.JsonFormatter);
             }
         }
     }

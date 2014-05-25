@@ -24,14 +24,15 @@ namespace ORT.Mobile
     {
         private string ServiceBaseUrl = "http://futurasoft.com.ar/ORTWebApi/api/";
 
-        private class Evento
+        public class Evento
         {
+            public int ID { get; set; }
+            public string Fecha { get; set; }
             public string Titulo { get; set; }
             public string Descripcion { get; set; }
-            public DateTime Fecha { get; set; }
         }
 
-        private class Foto
+        public class Foto
         {
             public BitmapImage Imagen { get; set; }
         }
@@ -75,7 +76,7 @@ namespace ORT.Mobile
                 var list = new List<Foto>();
                 foreach (var photo in photos)
                 {
-                    list.Add(new Foto() { Imagen = Base64Image(photo.Imagen) });
+                    list.Add(new Foto() { Imagen = Base64Image(Convert.ToString(photo.Imagen)) });
                 }
 
                 Photos.ItemsSource = list;
@@ -86,7 +87,7 @@ namespace ORT.Mobile
         {
             if (!String.IsNullOrEmpty(e.Result))
             {
-                dynamic agenda = JsonConvert.DeserializeObject<List<Evento>>(e.Result);
+                var agenda = JsonConvert.DeserializeObject<List<Evento>>(e.Result);
 
                 Agenda.ItemsSource = agenda;
             }
