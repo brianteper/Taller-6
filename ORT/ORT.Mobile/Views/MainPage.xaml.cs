@@ -15,34 +15,100 @@ using System.Text.RegularExpressions;
 using Venetasoft.WP.Net;
 using System.Text;
 using Newtonsoft.Json;
+using System.Windows.Media.Imaging;
+using System.IO;
 
 namespace ORT.Mobile
 {
     public partial class MainPage : PhoneApplicationPage
     {
         private string ServiceBaseUrl = "http://futurasoft.com.ar/ORTWebApi/api/";
+
+        private class Evento
+        {
+            public string Titulo { get; set; }
+            public string Descripcion { get; set; }
+            public DateTime Fecha { get; set; }
+        }
+
+        private class Foto
+        {
+            public BitmapImage Imagen { get; set; }
+        }
+        
         // Constructor
         public MainPage()
         {
             InitializeComponent();
+        }
 
-            // Set the data context of the listbox control to the sample data
-            DataContext = App.ViewModel;
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            GetRequest("photos", photos_DownloadStringCompleted);
+            GetRequest("agenda", agenda_DownloadStringCompleted);
+        }
+
+        private void GetRequest(string path, DownloadStringCompletedEventHandler method)
+        {
+            try
+            {
+                Uri uri = new Uri(ServiceBaseUrl + path, UriKind.Absolute);
+
+                WebClient webClient = new WebClient();
+                webClient.DownloadStringCompleted += method;
+                webClient.DownloadStringAsync(uri);
+            }
+            catch (Exception ex)
+            {
+                
+            }
+        }
+
+        private void photos_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(e.Result))
+            {
+                dynamic photos = JsonConvert.DeserializeObject(e.Result);
+
+                var list = new List<Foto>();
+                foreach (var photo in photos)
+                {
+                    list.Add(new Foto() { Imagen = Base64Image(photo.Imagen) });
+                }
+
+                Photos.ItemsSource = list;
+            }
+        }
+
+        private void agenda_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(e.Result))
+            {
+                dynamic agenda = JsonConvert.DeserializeObject<List<Evento>>(e.Result);
+
+                Agenda.ItemsSource = agenda;
+            }
+        }
+
+        public static BitmapImage Base64Image(string base64string)
+        {
+            byte[] fileBytes = Convert.FromBase64String(base64string);
+
+            using (MemoryStream ms = new MemoryStream(fileBytes, 0, fileBytes.Length))
+            {
+                ms.Write(fileBytes, 0, fileBytes.Length);
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.SetSource(ms);
+                return bitmapImage;
+            }
         }
 
         private void Map_Loaded(object sender, RoutedEventArgs e)
         {
             MapsSettings.ApplicationContext.ApplicationId = "<applicationid>";
             MapsSettings.ApplicationContext.AuthenticationToken = "<authenticationtoken>";
-        }
-
-        // Load data for the ViewModel Items
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            if (!App.ViewModel.IsDataLoaded)
-            {
-                App.ViewModel.LoadData();
-            }
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
