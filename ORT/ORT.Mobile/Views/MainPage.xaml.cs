@@ -250,7 +250,14 @@ namespace ORT.Mobile.Views
 
         private void Carrera_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Views/Carrera.xaml?buttonName=" + ((Button)sender).Name + "&description=" + ((Button)sender).Content, UriKind.Relative));
+            if (((Button)sender).Content is System.Windows.Controls.TextBlock)
+            {
+                NavigationService.Navigate(new Uri("/Views/Carrera.xaml?buttonName=" + ((Button)sender).Name + "&description=" + ((TextBlock)((Button)sender).Content).Text, UriKind.Relative));
+            }
+            else
+            {
+                NavigationService.Navigate(new Uri("/Views/Carrera.xaml?buttonName=" + ((Button)sender).Name + "&description=" + ((Button)sender).Content, UriKind.Relative));
+            }
         }
 
         private void FacebookLink_Click(object sender, RoutedEventArgs e)

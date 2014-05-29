@@ -18,7 +18,7 @@ namespace ORT.WebApi.Controllers
         {
             using (var ortWPContext = new ORTWPEntities())
             {
-                var agenda = (from a in ortWPContext.Agenda where a.Fecha >= DateTime.Today select a);
+                var agenda = (from a in ortWPContext.Agenda where a.Fecha >= DateTime.Today select a).OrderBy(a => a.Fecha);
 
                 return Request.CreateResponse(HttpStatusCode.OK, agenda.ToArray(), Configuration.Formatters.JsonFormatter);
             }
