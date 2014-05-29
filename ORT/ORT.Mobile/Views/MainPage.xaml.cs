@@ -17,8 +17,9 @@ using System.Text;
 using Newtonsoft.Json;
 using System.Windows.Media.Imaging;
 using System.IO;
+using Microsoft.Phone.Tasks;
 
-namespace ORT.Mobile
+namespace ORT.Mobile.Views
 {
     public partial class MainPage : PhoneApplicationPage
     {
@@ -108,8 +109,8 @@ namespace ORT.Mobile
 
         private void Map_Loaded(object sender, RoutedEventArgs e)
         {
-            MapsSettings.ApplicationContext.ApplicationId = "<applicationid>";
-            MapsSettings.ApplicationContext.AuthenticationToken = "<authenticationtoken>";
+            MapsSettings.ApplicationContext.ApplicationId = "73727035-2266-4818-bbc7-c59aaa4a1f94";
+            MapsSettings.ApplicationContext.AuthenticationToken = "pY5Q7xjtgWEYcCcelb3ZIA";
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
@@ -250,6 +251,13 @@ namespace ORT.Mobile
         private void Carrera_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/Views/Carrera.xaml?buttonName=" + ((Button)sender).Name + "&description=" + ((Button)sender).Content, UriKind.Relative));
+        }
+
+        private void FacebookLink_Click(object sender, RoutedEventArgs e)
+        {
+            WebBrowserTask webBrowserTask = new WebBrowserTask();
+            webBrowserTask.Uri = new Uri("http://m.facebook.com/isedeyatay");
+            webBrowserTask.Show();
         }
     }
 }

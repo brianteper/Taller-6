@@ -17,7 +17,7 @@ namespace ORT.WebApi.Controllers
         {
             using (var ortWPContext = new ORTWPEntities())
             {
-                var photos = (from p in ortWPContext.Fotos where p.Vigente == true select p).Take(1);
+                var photos = (from p in ortWPContext.Fotos where p.Vigente == true select p);
 
                 return Request.CreateResponse(HttpStatusCode.OK, photos.ToArray(), Configuration.Formatters.JsonFormatter);
             }

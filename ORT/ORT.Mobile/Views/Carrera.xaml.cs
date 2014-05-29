@@ -8,7 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
-namespace ORT.Views
+namespace ORT.Mobile.Views
 {
     public partial class Carrera : PhoneApplicationPage
     {

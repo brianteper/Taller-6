@@ -9,7 +9,8 @@
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:mapsToolkit="clr-namespace:Microsoft.Phone.Maps.Toolkit;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:System="clr-namespace:System;assembly=mscorlib"
-    x:Class="ORT.Mobile.MainPage"
+    xmlns:converters="clr-namespace:ORT.Mobile.Converters"
+    x:Class="ORT.Mobile.Views.MainPage"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -66,6 +67,9 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <converters:DiaConverter x:Key="DiaConverter"/>
+        <converters:MesConverter x:Key="MesConverter"/>
     </phone:PhoneApplicationPage.Resources>
 
     <shell:SystemTray.ProgressIndicator>
@@ -74,7 +78,7 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        
+
         <!-- LOCALIZATION NOTE:
             To localize the displayed strings copy their values to appropriately named
             keys in the app's neutral language resource file (AppResources.resx) then
@@ -99,15 +103,52 @@
             <phone:Panorama.Background>
                 <ImageBrush ImageSource="/ORT;component/Assets/PanoramaBackground.png"/>
             </phone:Panorama.Background>
-            
+
             <!--Panorama item one-->
             <phone:PanoramaItem Header="Carreras">
                 <StackPanel Margin="0,-6,0,12">
                     <TextBlock Text="Almagro" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
-                    <Button Content="Analista de Sistemas" Click="Carrera_Click" Name="AnalistaSistemas" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight" Style="{StaticResource ButtonStyleCareer}"></Button>
-                    <Button Content="Producción de Música y Sonido" Click="Carrera_Click" Name="ProduccionMusicaSonido" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight" Style="{StaticResource ButtonStyleCareer}"></Button>
-                    <Button Content="Automatización Industrial" Click="Carrera_Click" Name="AutomatizacionIndustrial" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight" Style="{StaticResource ButtonStyleCareer}"></Button>
-                    <Button Content="Biotecnología" Click="Carrera_Click" Name="Biotecnologia" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight" Style="{StaticResource ButtonStyleCareer}"></Button>
+
+                    <StackPanel Orientation="Horizontal" Margin="12,2,0,2" Height="105" Width="432">
+                        <Border BorderThickness="1" Width="70" Height="70" BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Source="/Assets/AnalistaSistemas.png"></Image>
+                        </Border>
+                        <StackPanel Width="311" Margin="8,-7,0,0" VerticalAlignment="Center">
+                            <Button Content="Analista de Sistemas" Click="Carrera_Click" Name="AnalistaSistemas" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="-20,10,0,0" FontWeight="ExtraLight" Style="{StaticResource ButtonStyleCareer}" FontSize="25"></Button>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="12,2,0,2" Height="105" Width="432">
+                        <Border BorderThickness="1" Width="70" Height="70" BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Source="/Assets/ProduccionMusica.png"></Image>
+                        </Border>
+                        <StackPanel Width="311" Margin="8,-7,0,0" VerticalAlignment="Center">
+                            <Button Click="Carrera_Click" Name="ProduccionMusicaSonido" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="-20,10,0,0" FontWeight="ExtraLight" Style="{StaticResource ButtonStyleCareer}" FontSize="25">
+                                <Button.Content>
+                                    <TextBlock Text="Producción de Música y Sonido" TextWrapping="Wrap"/>
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="12,2,0,2" Height="105" Width="432">
+                        <Border BorderThickness="1" Width="70" Height="70" BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Source="/Assets/Automatizacion.png"></Image>
+                        </Border>
+                        <StackPanel Width="311" Margin="8,-7,0,0" VerticalAlignment="Center">
+                            <Button Content="Automatización Industrial" Click="Carrera_Click" Name="AutomatizacionIndustrial" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="-20,10,0,0" FontWeight="ExtraLight" Style="{StaticResource ButtonStyleCareer}" FontSize="25"></Button>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="12,2,0,2" Height="105" Width="432">
+                        <Border BorderThickness="1" Width="70" Height="70" BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Source="/Assets/Biotecnologia.png"></Image>
+                        </Border>
+                        <StackPanel Width="311" Margin="8,-7,0,0" VerticalAlignment="Center">
+                            <Button Content="Biotecnología" Click="Carrera_Click" Name="Biotecnologia" HorizontalAlignment="Left" BorderBrush="Transparent" Margin="-20,10,0,0" FontWeight="ExtraLight" Style="{StaticResource ButtonStyleCareer}" FontSize="25"></Button>
+                        </StackPanel>
+                    </StackPanel>
+
                     <!--<TextBlock Text="Belgrano" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
                     <Button Content="Diseño Industrial" Click="Carrera_Click" Name="DiseñoIndustrial" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight" Style="{StaticResource ButtonStyleCareer}"></Button>
                     <Button Content="Diseño de Indumentaria" Click="Carrera_Click" Name="DiseñoIndumentaria" HorizontalAlignment="Left" BorderBrush="Transparent" Padding="10,-10,0,-10" FontWeight="ExtraLight" Style="{StaticResource ButtonStyleCareer}"></Button>
@@ -119,7 +160,7 @@
             <!--Panorama item two-->
             <phone:PanoramaItem>
                 <!--Double line list with image placeholder and text wrapping using a floating header that scrolls with the content-->
-                <phone:LongListSelector Name="Agenda" Margin="0,-38,-22,2" ItemsSource="{Binding}">
+                <phone:LongListSelector Name="Agenda" Margin="0,-38,0,2" ItemsSource="{Binding}">
                     <phone:LongListSelector.ListHeaderTemplate>
                         <DataTemplate>
                             <Grid Margin="12,0,0,38">
@@ -136,8 +177,12 @@
                     <phone:LongListSelector.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="12,2,0,4" Height="105" Width="432">
-                                <!--Replace rectangle with image-->
-                                <Border BorderThickness="1" Width="99" Height="99" BorderBrush="#FFFFC700" Background="#FFFFC700"/>
+                                <Border BorderThickness="1" Width="125" Height="99" BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <StackPanel>
+                                        <TextBlock Name="Dia" Text="{Binding Fecha, Converter={StaticResource DiaConverter}}" FontSize="40" HorizontalAlignment="Center"></TextBlock>
+                                        <TextBlock Name="Mes" Text="{Binding Fecha, Converter={StaticResource MesConverter}}" FontSize="22" HorizontalAlignment="Center"></TextBlock>
+                                    </StackPanel>
+                                </Border>
                                 <StackPanel Width="311" Margin="8,-7,0,0">
                                     <TextBlock Text="{Binding Titulo}" TextWrapping="Wrap" Margin="10,0" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeLarge}" />
                                     <TextBlock Text="{Binding Descripcion}" TextWrapping="Wrap" Margin="10,-2,10,0" Style="{StaticResource PhoneTextSubtleStyle}" />
@@ -166,7 +211,7 @@
                 <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,4,16,10">
                     <maps:Map Name="Mapa" CartographicMode="Road" Center="-34.59893, -58.42657" ZoomLevel="12" Loaded="Map_Loaded">
                         <mapsToolkit:MapExtensions.Children>
-                            <mapsToolkit:Pushpin x:Name="Almagro" Content="Almagro (Yatay 240)" GeoCoordinate="-34.6099167, -58.4291801"/>
+                            <mapsToolkit:Pushpin x:Name="Almagro" Content="Instituto ORT (Almagro)" GeoCoordinate="-34.6099167, -58.4291801" Background="CornflowerBlue"/>                            
                             <!--<mapsToolkit:Pushpin x:Name="Belgrano" Content="Belgrano (Av. del Libertador 6796)" GeoCoordinate="-34.5496559, -58.4540443"/>-->
                         </mapsToolkit:MapExtensions.Children>
                     </maps:Map>
@@ -175,17 +220,28 @@
 
             <!--Panorama item five-->
             <phone:PanoramaItem Header="Contacto">
-                <ScrollViewer>
-                    <StackPanel Margin="0,-6,0,12">
-                        <TextBlock Text="Almagro" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
-                        <TextBlock Text="Yatay 240 (C1184ADD) Bs. As - Argentina" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-                        <TextBlock Text="Tel.: 4958-9000" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-                        <TextBlock Text="INFORMES E INSCRIPCIÓN" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-                        <TextBlock Text="PARA INGRESANTES" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-                        <TextBlock Text="Tel.: 4958-9032" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-                        <TextBlock Text="Lunes a Jueves de 13:00 a 22:00 Hs." TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-                        <TextBlock Text="instituto@ort.edu.ar" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-                        <!--<TextBlock Text="Belgrano" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
+                <StackPanel Margin="0,-6,0,12">
+                    <TextBlock Text="Almagro" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="50"/>
+                    <TextBlock Text="Yatay 240 (C1184ADD)" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="25"/>
+                    <TextBlock Text="Bs. As - Argentina" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="25"/>
+                    <TextBlock Text="Tel.: 4958-9000" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="25"/>
+                    <TextBlock Text="INFORMES E INSCRIPCIÓN" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="25"/>
+                    <TextBlock Text="PARA INGRESANTES" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="25"/>
+                    <TextBlock Text="Tel.: 4958-9032" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="25"/>
+                    <TextBlock Text="Lunes a Jueves de 13:00 a 22:00 Hs." TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="25"/>
+                    <TextBlock Text="instituto@ort.edu.ar" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="25"/>
+                    <Grid x:Name="FacebookPanel" Grid.Row="1" Margin="0,20,0,0">
+                        <StackPanel x:Name="FacebookStackPanel" Visibility="Visible" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Name="FacebookLink" Width="100" Height="100" Click="FacebookLink_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/Assets/FacebookIcon.png"/>
+                                </Button.Background>
+                            </Button>
+
+                            <TextBlock Text="/isedeyatay" FontSize="30" Margin="0,25,0,25"></TextBlock>
+                        </StackPanel>
+                    </Grid>
+                    <!--<TextBlock Text="Belgrano" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
                         <TextBlock Text="Av. del Libertador 6796" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
                         <TextBlock Text="(C1429BMN) Bs.As - Argentina" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
                         <TextBlock Text="Tel.: 4789-6500" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
@@ -194,8 +250,7 @@
                         <TextBlock Text="Tel.: 4789-6566" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
                         <TextBlock Text="Lunes a Jueves de 13:00 a 22:00 Hs." TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
                         <TextBlock Text="instituto@ort.edu.ar" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>-->
-                    </StackPanel>
-                </ScrollViewer>
+                </StackPanel>
             </phone:PanoramaItem>
 
             <!--Panorama item four-->

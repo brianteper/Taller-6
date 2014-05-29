@@ -18,9 +18,7 @@ namespace ORT.WebApi.Controllers
         {
             using (var ortWPContext = new ORTWPEntities())
             {
-                var limitDate = DateTime.Today.AddDays(30);
-
-                var agenda = (from a in ortWPContext.Agenda where a.Fecha >= DateTime.Today && a.Fecha < limitDate select a);
+                var agenda = (from a in ortWPContext.Agenda where a.Fecha >= DateTime.Today select a);
 
                 return Request.CreateResponse(HttpStatusCode.OK, agenda.ToArray(), Configuration.Formatters.JsonFormatter);
             }

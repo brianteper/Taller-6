@@ -93,6 +93,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\MesConverter.cs" />
+    <Compile Include="Converters\DiaConverter.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Views\Carrera.xaml.cs">
       <DependentUpon>Carrera.xaml</DependentUpon>
@@ -129,6 +131,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Automatizacion.png" />
+    <Content Include="Assets\ProduccionMusica.png" />
+    <Content Include="Assets\Biotecnologia.png" />
+    <Content Include="Assets\AnalistaSistemas.png" />
+    <Content Include="Assets\ApplicationIcon.png" />
+    <Content Include="Assets\FacebookIcon.png" />
+    <Content Include="Assets\Tiles\IconicTileSmall.png" />
+    <Content Include="Assets\Tiles\IconicTileMediumLarge.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
@@ -136,9 +146,6 @@
     <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
     <Resource Include="Assets\PanoramaBackground.png" />
     <Content Include="Assets\AlignmentGrid.png" />
-    <Content Include="Assets\ApplicationIcon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -146,12 +153,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Tiles\FlipCycleTileSmall.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Tiles\IconicTileMediumLarge.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
