@@ -70,7 +70,7 @@ namespace ORT.Mobile.Views
 
         private void photos_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
-            if (!String.IsNullOrEmpty(e.Result))
+            if (e.Error == null)
             {
                 dynamic photos = JsonConvert.DeserializeObject(e.Result);
 
@@ -86,7 +86,7 @@ namespace ORT.Mobile.Views
 
         private void agenda_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
-            if (!String.IsNullOrEmpty(e.Result))
+            if (e.Error == null)
             {
                 var agenda = JsonConvert.DeserializeObject<List<Evento>>(e.Result);
 
