@@ -1,6 +1,6 @@
 <MarketplaceDetails>
-  <SmallAppTile>rsz_382271.png</SmallAppTile>
-  <ScreenShots>;;;;;;;;</ScreenShots>
-  <ScreenShotsWXGA>;;;;;;;;</ScreenShotsWXGA>
-  <ScreenShots720P>;;;;;;;;</ScreenShots720P>
+  <SmallAppTile>StoreIcon.png</SmallAppTile>
+  <ScreenShots>WVGA1.png;WVGA2.png;WVGA3.png;WVGA4.png;WVGA5.png;WVGA6.png;WVGA7.png;;</ScreenShots>
+  <ScreenShotsWXGA>WXGA1.png;WXGA2.png;WXGA3.png;WXGA4.png;WXGA5.png;WXGA6.png;WXGA7.png;;</ScreenShotsWXGA>
+  <ScreenShots720P>7201.png;7202.png;7203.png;7204.png;7205.png;7206.png;7207.png;;</ScreenShots720P>
 </MarketplaceDetails>
