@@ -181,7 +181,7 @@
             </phone:PanoramaItem>
 
             <!--Panorama item three-->
-            <phone:PanoramaItem Header="Fotos" Orientation="Horizontal">
+            <!--<phone:PanoramaItem Header="Fotos" Orientation="Horizontal">
                 <ListBox Name="Photos">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -191,7 +191,7 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-            </phone:PanoramaItem>
+            </phone:PanoramaItem>-->
 
             <!--Panorama item four-->
             <phone:PanoramaItem Header="Ubicación">

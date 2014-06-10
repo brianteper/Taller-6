@@ -48,7 +48,7 @@ namespace ORT.Mobile.Views
         {
             base.OnNavigatedTo(e);
 
-            GetRequest("photos", photos_DownloadStringCompleted);
+            //GetRequest("photos", photos_DownloadStringCompleted);
             GetRequest("agenda", agenda_DownloadStringCompleted);
         }
 
@@ -68,21 +68,21 @@ namespace ORT.Mobile.Views
             }
         }
 
-        private void photos_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
-        {
-            if (e.Error == null)
-            {
-                dynamic photos = JsonConvert.DeserializeObject(e.Result);
+        //private void photos_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        //{
+        //    if (e.Error == null)
+        //    {
+        //        dynamic photos = JsonConvert.DeserializeObject(e.Result);
 
-                var list = new List<Foto>();
-                foreach (var photo in photos)
-                {
-                    list.Add(new Foto() { Imagen = Base64Image(Convert.ToString(photo.Imagen)) });
-                }
+        //        var list = new List<Foto>();
+        //        foreach (var photo in photos)
+        //        {
+        //            list.Add(new Foto() { Imagen = Base64Image(Convert.ToString(photo.Imagen)) });
+        //        }
 
-                Photos.ItemsSource = list;
-            }
-        }
+        //        Photos.ItemsSource = list;
+        //    }
+        //}
 
         private void agenda_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {

@@ -18,7 +18,6 @@ namespace ORT.WebApi.Controllers
             var fromEmail = "instituto.ort.smtp@gmail.com";
             var fromPassword = "ort.smtp.2014";
 
-            //var toEmail = "brian.teper@outlook.com";
             var toEmail = "ito1@ort.edu.ar";
             
             MailMessage mail = new MailMessage(fromEmail, toEmail);
