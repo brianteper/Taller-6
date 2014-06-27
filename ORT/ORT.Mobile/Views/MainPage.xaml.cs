@@ -23,7 +23,7 @@ namespace ORT.Mobile.Views
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        private string ServiceBaseUrl = "http://futurasoft.com.ar/ORTWebApi/api/";
+        private string ServiceBaseUrl = "http://190.210.181.176/ORTWebApi/api/";
 
         public class Evento
         {
